@@ -29,7 +29,7 @@ export default function ProjectSearchCompanion() {
             It can also extract and inject information into various other relevant web pages to speed up the ordering of products and the production of reports.<br/>
             <br/>
             I maintain this as the sole developer on behalf of the company, where it is used by most members of the office on a daily basis.
-            It is currently available on both the Chrome Web Store and Firefox Add-ons Store, though it is either unlisted or listed with low priority, as the extension is not inteded for public use.
+            It is currently available on both the Chrome Web Store and Firefox Add-ons Store, though it is either unlisted or listed with low priority, as the extension is not intended for public use.
             The extension can be found via the following links, though please note, it is largely unusable without access to the CMS it was designed for.<br/>
             <br/>
             <a href="https://chrome.google.com/webstore/detail/search-companion/kdmjohdcocbbjfelihflkakgimkefabo" >Chrome</a> and&nbsp;
