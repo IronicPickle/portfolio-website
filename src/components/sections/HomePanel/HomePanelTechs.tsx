@@ -8,6 +8,8 @@ import expressLogo from "./media/expressLogo.png";
 import reactLogo from "./media/reactLogo.png";
 import materialLogo from "./media/materialLogo.png";
 import jqueryLogo from "./media/jqueryLogo.png";
+import webpackLogo from "./media/webpackLogo.png";
+import nginxLogo from "./media/nginxLogo.png";
 
 export default function HomePanelTechs() {
   const theme = useTheme();
@@ -32,4 +34,6 @@ const technologies = [
   { imgSrc: reactLogo, text: "React" },
   { imgSrc: materialLogo, text: "Material UI" },
   { imgSrc: jqueryLogo, text: "JQuery" },
+  { imgSrc: webpackLogo, text: "Webpack" },
+  { imgSrc: nginxLogo, text: "NGINX" },
 ]
