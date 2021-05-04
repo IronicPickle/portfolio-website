@@ -3,6 +3,7 @@ import React from 'react'
 import ProjectDuct from '../../pieces/projects/duct/ProjectDuct';
 import ProjectForum from '../../pieces/projects/forum/ProjectForum';
 import ProjectLykos from '../../pieces/projects/lykos/ProjectLykos';
+import ProjectSearchCompanion from '../../pieces/projects/search_companion/ProjectSearchCompanion';
 
 interface Props extends WithStyles<typeof styles> {}
 
@@ -13,6 +14,10 @@ function HomePanelProjects(props: Props) {
     <>
       <div className={classes.projectWrapper} >
         <ProjectLykos />
+      </div>
+      <Divider />
+      <div className={classes.projectWrapper} >
+        <ProjectSearchCompanion />
       </div>
       <Divider />
       <div className={classes.projectWrapper} >
