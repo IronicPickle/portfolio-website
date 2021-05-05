@@ -37,7 +37,7 @@ function HomeFront(props: Props) {
               color="primary"
               align="center"
               style={{ marginBottom: theme.spacing(2) }}
-            >Self Taught, Full-Stack Web Developer</Typography>
+            >Self-Taught, Full-Stack Web Developer</Typography>
             { !tabletView && <Divider style={{
               backgroundColor: theme.palette.secondary.main
             }} /> }
