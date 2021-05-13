@@ -36,7 +36,7 @@ export default function ProjectForum() {
           <>
             This was the first full project that I saw from start to finish.
             It was intended to serve an online community I was building at the time, but never saw proper deployment.
-            Written with pure JavaScript and JQuery, it certainly shows it age.
+            Written with pure JavaScript and JQuery, it certainly shows it's age.
             But nonetheless, this project taught me a lot about how to develop a full stack web application.<br/>
             <br/>
             <b>What is was Written in</b><br/>
