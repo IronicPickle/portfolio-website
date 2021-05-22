@@ -1,5 +1,15 @@
-import { Container, Divider, Fade, Theme, Typography, useMediaQuery, useTheme, WithStyles, withStyles } from '@material-ui/core'
-import React from 'react'
+import {
+  Container,
+  Divider,
+  Fade,
+  Theme,
+  Typography,
+  useMediaQuery,
+  useTheme,
+  WithStyles,
+  withStyles,
+} from "@material-ui/core";
+import React from "react";
 import screenshot1 from "./media/screenshot1.png";
 import screenshot2 from "./media/screenshot2.png";
 import screenshot3 from "./media/screenshot3.png";
@@ -19,36 +29,52 @@ function HomeFront(props: Props) {
     { className: classes.screenshot1, src: screenshot1, timeout: 1500 },
     { className: classes.screenshot2, src: screenshot2, timeout: 1000 },
     { className: classes.screenshot3, src: screenshot3, timeout: 500 },
-  ]
+  ];
 
   return (
-    <Container maxWidth="xl" style={{
-      marginTop: theme.spacing(8)
-    }} id={id}>
+    <Container
+      maxWidth="xl"
+      style={{
+        marginTop: theme.spacing(8),
+      }}
+      id={id}
+    >
       <div className={classes.mainWrapper}>
-        <Container maxWidth="xl" style={{
-          height: "100%",
-          display: "flex",
-          flexDirection: (tabletView) ? "column" : "row"
-        }}>
+        <Container
+          maxWidth="xl"
+          style={{
+            height: "100%",
+            display: "flex",
+            flexDirection: tabletView ? "column" : "row",
+          }}
+        >
           <div className={classes.titleWrapper}>
             <Typography
-              variant={(mobileView) ? "h4" : "h3"}
+              variant={mobileView ? "h4" : "h3"}
               color="primary"
               align="center"
               style={{ marginBottom: theme.spacing(2) }}
-            >Self-Taught, Full-Stack Web Developer</Typography>
-            { !tabletView && <Divider style={{
-              backgroundColor: theme.palette.secondary.main
-            }} /> }
+            >
+              Self-Taught, Full-Stack Web Developer
+            </Typography>
+            {!tabletView && (
+              <Divider
+                style={{
+                  backgroundColor: theme.palette.secondary.main,
+                }}
+              />
+            )}
             <Typography
-              variant={(mobileView) ? "h6" : "h5"}
+              variant={mobileView ? "h6" : "h5"}
               color="primary"
               align="center"
               style={{ marginTop: theme.spacing(4) }}
-            >With 3 years of programming experience and more projects than I can remember.</Typography>
+            >
+              With 3 years of programming experience and more projects than I
+              can remember.
+            </Typography>
             <Typography
-              variant={(mobileView) ? "body1" : "h6"}
+              variant={mobileView ? "body1" : "h6"}
               color="primary"
               align="center"
               style={{ marginTop: theme.spacing(4) }}
@@ -57,7 +83,7 @@ function HomeFront(props: Props) {
             </Typography>
           </div>
           <div className={classes.screenshotWrapper}>
-            { screenshots.map((screenshot, i) => (
+            {screenshots.map((screenshot, i) => (
               <Fade in timeout={screenshot.timeout} key={i}>
                 <img
                   src={screenshot.src}
@@ -65,12 +91,12 @@ function HomeFront(props: Props) {
                   className={`${classes.screenshot} ${screenshot.className}`}
                 />
               </Fade>
-            )) }
+            ))}
           </div>
         </Container>
-        </div>
+      </div>
     </Container>
-  )
+  );
 }
 
 const styles = (theme: Theme) => ({
@@ -78,11 +104,11 @@ const styles = (theme: Theme) => ({
     height: `calc(100vh - ${theme.spacing(8)}px)`,
     minHeight: 500,
     [theme.breakpoints.down("md")]: {
-      minHeight: 950
+      minHeight: 950,
     },
     [theme.breakpoints.down("sm")]: {
-      minHeight: 850
-    }
+      minHeight: 850,
+    },
   },
   titleWrapper: {
     display: "flex" as "flex",
@@ -92,12 +118,12 @@ const styles = (theme: Theme) => ({
     marginTop: 0,
     maxWidth: "30%",
     [theme.breakpoints.down("lg")]: {
-      marginLeft: theme.spacing(8)
+      marginLeft: theme.spacing(8),
     },
     [theme.breakpoints.down("md")]: {
       marginLeft: 0,
       marginTop: theme.spacing(6),
-      maxWidth: "unset"
+      maxWidth: "unset",
     },
   },
   screenshotWrapper: {
@@ -108,12 +134,12 @@ const styles = (theme: Theme) => ({
     position: "relative" as "relative",
     margin: theme.spacing(16),
     [theme.breakpoints.down("lg")]: {
-      margin: theme.spacing(8)
+      margin: theme.spacing(8),
     },
     [theme.breakpoints.down("sm")]: {
-      margin: 0
+      margin: 0,
     },
-    flexGrow: 1
+    flexGrow: 1,
   },
   screenshot: {
     position: "absolute" as "absolute",
@@ -124,29 +150,29 @@ const styles = (theme: Theme) => ({
     borderWidth: 1,
     borderStyle: "solid",
     [theme.breakpoints.down("lg")]: {
-      maxWidth: "90vh"
+      maxWidth: "90vh",
     },
     [theme.breakpoints.down("sm")]: {
-      maxWidth: "80vh"
+      maxWidth: "80vh",
     },
   },
   screenshot1: {
-    marginBottom: theme.spacing(24),
+    marginTop: theme.spacing(-24),
     [theme.breakpoints.down("sm")]: {
-      width: "100%"
-    }
+      width: "100%",
+    },
   },
   screenshot2: {
     [theme.breakpoints.down("sm")]: {
-      width: "100%"
-    }
+      width: "100%",
+    },
   },
   screenshot3: {
     marginTop: theme.spacing(24),
     [theme.breakpoints.down("sm")]: {
-      width: "100%"
-    }
-  }
+      width: "100%",
+    },
+  },
 });
 
 export default withStyles(styles)(HomeFront);
