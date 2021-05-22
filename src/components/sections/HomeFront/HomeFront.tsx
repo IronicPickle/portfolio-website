@@ -70,7 +70,7 @@ function HomeFront(props: Props) {
               align="center"
               style={{ marginTop: theme.spacing(4) }}
             >
-              With 3 years of programming experience and more projects than I
+              with 3 years of programming experience and more projects than I
               can remember.
             </Typography>
             <Typography
