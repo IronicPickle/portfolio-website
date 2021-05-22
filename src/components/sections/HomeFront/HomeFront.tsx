@@ -70,8 +70,8 @@ function HomeFront(props: Props) {
               align="center"
               style={{ marginTop: theme.spacing(4) }}
             >
-              {/*With 3 years of programming experience and more projects than I  can remember.*/}
-              testing this
+              With 3 years of programming experience and more projects than I
+              can remember.
             </Typography>
             <Typography
               variant={mobileView ? "body1" : "h6"}
