@@ -6,7 +6,7 @@ import screenshot2 from "./media/screenshot2.png";
 import screenshot3 from "./media/screenshot3.png";
 import screenshot4 from "./media/screenshot4.png";
 import screenshot5 from "./media/screenshot5.png";
-//
+
 export default function ProjectDuct() {
   return (
     <HomePanelProject
