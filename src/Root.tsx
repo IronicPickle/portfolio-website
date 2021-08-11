@@ -11,7 +11,7 @@ const theme = mainTheme;
 export default function Root() {
   document.body.style.backgroundColor = theme.palette.background.default;
 
-  ReactGA.initialize("G-WGC27DCC0Q");
+  ReactGA.initialize("UA-204799069-1");
   ReactGA.pageview(window.location.pathname + window.location.search);
 
   return (
