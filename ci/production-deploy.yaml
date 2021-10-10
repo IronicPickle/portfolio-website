@@ -1,0 +1,40 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: portfolio-production
+  namespace: portfolio
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: portfolio-production
+  template:
+    metadata:
+      labels:
+        app: portfolio-production
+    spec:
+      containers:
+        - name: portfolio-production
+          image: ironicpickle/portfolio:production
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-production
+  namespace: portfolio
+spec:
+  type: ClusterIP
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 80
+  selector:
+    app: portfolio-production
+status:
+  loadBalancer: {}

@@ -1,0 +1,79 @@
+podTemplate(yaml: '''
+    apiVersion: v1
+    kind: Pod
+    spec:
+      containers:
+    
+      - image: "docker:18.05-dind"
+        imagePullPolicy: "IfNotPresent"
+        name: "dind"
+        resources:
+          limits: {}
+          requests: {}
+        securityContext:
+          privileged: true
+        tty: false
+        volumeMounts:
+        - mountPath: "/home/jenkins/agent"
+          name: "workspace-volume"
+          readOnly: false
+        workingDir: "/home/jenkins/agent"
+
+      - name: node
+        image: node:12-alpine
+        workingDir: /home/jenkins/agent
+        volumeMounts:
+        - mountPath: "/home/jenkins/agent"
+          name: "workspace-volume"
+          readOnly: false
+        command:
+        - sleep
+        args:
+        - 99d
+
+      volumes:
+      - emptyDir:
+          medium: ""
+        name: "workspace-volume"
+''') {
+  node(POD_LABEL) {
+    stage('React Build') {
+        echo "Cloning repo"
+        checkout scm
+
+        container("node") {
+            echo 'Building react application'
+            
+            sh "npm install"
+            sh "npm run build"
+        }
+    }
+
+    stage('Docker Build') {
+        container("dind") {
+            echo 'Building docker image'
+
+            sh '''
+                docker login -u ironicpickle -p c7466d8f-cf70-490c-8f3d-cc117c5d7fab
+                docker build --no-cache . -t ironicpickle/portfolio:${ENVIRONMENT} -f ./ci/Dockerfile
+                docker push ironicpickle/portfolio:${ENVIRONMENT}
+            '''
+        }
+    }
+
+    stage('Kubernetes Deployment') {
+        container("jnlp") {
+            echo "Installing kubectl"
+            sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
+            sh 'chmod u+x ./kubectl'
+            
+            withKubeConfig([credentialsId: "116aef67-4693-4246-945c-24005490c106"]) {
+                echo 'Deploying image to kubernetes cluster'
+                sh './kubectl delete -f ./ci/${ENVIRONMENT}-deploy.yaml --ignore-not-found=true'
+                sh './kubectl apply -f ./ci/${ENVIRONMENT}-deploy.yaml'
+            }
+        }
+    }
+  }
+}
+
