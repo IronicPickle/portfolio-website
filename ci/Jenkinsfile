@@ -67,7 +67,7 @@ podTemplate(yaml: '''
             sh 'curl -LO "https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/amd64/kubectl"'  
             sh 'chmod u+x ./kubectl'
             
-            withKubeConfig([credentialsId: "116aef67-4693-4246-945c-24005490c106"]) {
+            withKubeConfig([credentialsId: "5f916af5-0ea0-4372-b9b0-500e4ffddba6"]) {
                 echo 'Deploying image to kubernetes cluster'
                 sh './kubectl delete -f ./ci/${ENVIRONMENT}-deploy.yaml --ignore-not-found=true'
                 sh './kubectl apply -f ./ci/${ENVIRONMENT}-deploy.yaml'
